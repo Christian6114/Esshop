@@ -1,0 +1,109 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\christian\\eshop\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{41010500-481B-4C5C-8389-DF90AC1A4317}|src\\Eshop.Infrastructure\\Eshop.Infrastructure.csproj|c:\\users\\christian\\eshop\\src\\eshop.infrastructure\\repositories\\productorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41010500-481B-4C5C-8389-DF90AC1A4317}|src\\Eshop.Infrastructure\\Eshop.Infrastructure.csproj|solutionrelative:src\\eshop.infrastructure\\repositories\\productorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B63D375C-1205-4366-BE51-7E42E9727C4F}|src\\Eshop.Domain\\Eshop.Domain.csproj|c:\\users\\christian\\eshop\\src\\eshop.domain\\interfaces\\iproductorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B63D375C-1205-4366-BE51-7E42E9727C4F}|src\\Eshop.Domain\\Eshop.Domain.csproj|solutionrelative:src\\eshop.domain\\interfaces\\iproductorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B63D375C-1205-4366-BE51-7E42E9727C4F}|src\\Eshop.Domain\\Eshop.Domain.csproj|c:\\users\\christian\\eshop\\src\\eshop.domain\\entities\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B63D375C-1205-4366-BE51-7E42E9727C4F}|src\\Eshop.Domain\\Eshop.Domain.csproj|solutionrelative:src\\eshop.domain\\entities\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D359A78-2562-4C0B-91EC-5BB845EDF1FE}|src\\Eshop.Api\\Eshop.Api.csproj|c:\\users\\christian\\eshop\\src\\eshop.api\\controllers\\productocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D359A78-2562-4C0B-91EC-5BB845EDF1FE}|src\\Eshop.Api\\Eshop.Api.csproj|solutionrelative:src\\eshop.api\\controllers\\productocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E789E8F7-F5A1-4BC4-B3B0-22CEA9FEA295}|src\\Eshop.Application\\Eshop.Application.csproj|c:\\users\\christian\\eshop\\src\\eshop.application\\dtos\\productodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E789E8F7-F5A1-4BC4-B3B0-22CEA9FEA295}|src\\Eshop.Application\\Eshop.Application.csproj|solutionrelative:src\\eshop.application\\dtos\\productodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\christian\\eshop\\src\\Eshop.Infrastructure\\Repositories\\ProductoRepository.cs",
+              "RelativeDocumentMoniker": "src\\Eshop.Infrastructure\\Repositories\\ProductoRepository.cs",
+              "ToolTip": "C:\\Users\\christian\\eshop\\src\\Eshop.Infrastructure\\Repositories\\ProductoRepository.cs",
+              "RelativeToolTip": "src\\Eshop.Infrastructure\\Repositories\\ProductoRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T15:06:38.395Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IProductoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\christian\\eshop\\src\\Eshop.Domain\\Interfaces\\IProductoRepository.cs",
+              "RelativeDocumentMoniker": "src\\Eshop.Domain\\Interfaces\\IProductoRepository.cs",
+              "ToolTip": "C:\\Users\\christian\\eshop\\src\\Eshop.Domain\\Interfaces\\IProductoRepository.cs",
+              "RelativeToolTip": "src\\Eshop.Domain\\Interfaces\\IProductoRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T15:06:27.702Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProductoController.cs",
+              "DocumentMoniker": "C:\\Users\\christian\\eshop\\src\\Eshop.Api\\Controllers\\ProductoController.cs",
+              "RelativeDocumentMoniker": "src\\Eshop.Api\\Controllers\\ProductoController.cs",
+              "ToolTip": "C:\\Users\\christian\\eshop\\src\\Eshop.Api\\Controllers\\ProductoController.cs",
+              "RelativeToolTip": "src\\Eshop.Api\\Controllers\\ProductoController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T14:54:42.523Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Producto.cs",
+              "DocumentMoniker": "C:\\Users\\christian\\eshop\\src\\Eshop.Domain\\Entities\\Producto.cs",
+              "RelativeDocumentMoniker": "src\\Eshop.Domain\\Entities\\Producto.cs",
+              "ToolTip": "C:\\Users\\christian\\eshop\\src\\Eshop.Domain\\Entities\\Producto.cs",
+              "RelativeToolTip": "src\\Eshop.Domain\\Entities\\Producto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T14:54:18.179Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProductoDTO.cs",
+              "DocumentMoniker": "C:\\Users\\christian\\eshop\\src\\Eshop.Application\\DTOs\\ProductoDTO.cs",
+              "RelativeDocumentMoniker": "src\\Eshop.Application\\DTOs\\ProductoDTO.cs",
+              "ToolTip": "C:\\Users\\christian\\eshop\\src\\Eshop.Application\\DTOs\\ProductoDTO.cs",
+              "RelativeToolTip": "src\\Eshop.Application\\DTOs\\ProductoDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T14:54:13.471Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
