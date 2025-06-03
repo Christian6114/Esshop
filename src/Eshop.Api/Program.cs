@@ -4,8 +4,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Eshop.Infrastructure;
 
-
 var builder = WebApplication.CreateBuilder(args);
+
+// Add JWT authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -19,16 +20,23 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+// Add DbContext for Entity Framework Core
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Add services for controllers
+builder.Services.AddControllers(); // Required for controller support
+
+// Add Swagger for API documentation
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Register services and repositories
 builder.Services.AddScoped<IProductoService, ProductoService>();
 builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
-builder.Services.AddScoped<IUserService, UserService>(); 
+builder.Services.AddScoped<IUserService, UserService>();
 
+// Add CORS
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
@@ -38,10 +46,13 @@ builder.Services.AddCors(options =>
               .AllowAnyMethod();
     });
 });
+
+// Add authorization
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
+// Configure middleware pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -49,18 +60,15 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors();
-
 app.UseHttpsRedirection();
-
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapGet("/productos", async (AppDbContext db) =>
-{
-    var productos = await db.Productos.ToListAsync();
-    return Results.Ok(productos);
-});
+// Enable controller routing
+app.UseRouting();
+app.MapControllers();
 
+// Minimal API endpoints (retaining POST endpoints)
 app.MapPost("/productos", async (ProductoDto productoDto, IProductoService service) =>
 {
     await service.AgregarAsync(productoDto);

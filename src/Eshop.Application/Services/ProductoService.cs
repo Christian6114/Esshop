@@ -12,24 +12,45 @@ public class ProductoService : IProductoService
         var productos = await _repo.GetAllAsync();
         return productos.Select(p => new ProductoDto
         {
+            id_producto = p.id_producto,
+            ImgProducto = p.ImgProducto,
             Nombre = p.Nombre,
             Descripcion = p.Descripcion,
             Precio = p.Precio,
-            Id_categoria = p.Id_categoria,
-            Id_marca = p.Id_marca
+            id_categoria = p.id_categoria,
+            id_marca = p.id_marca
         });
     }
 
-public async Task AgregarAsync(ProductoDto productoDto)
-{
-    var producto = new Producto
+    public async Task AgregarAsync(ProductoDto productoDto)
     {
-        Nombre = productoDto.Nombre,
-        Descripcion = productoDto.Descripcion,
-        Precio = productoDto.Precio,
-        Id_categoria = productoDto.Id_categoria,
-        Id_marca = productoDto.Id_marca
+        var producto = new Producto
+        {
+            // id_producto is not set here as it's typically auto-generated
+            ImgProducto = productoDto.ImgProducto,
+            Nombre = productoDto.Nombre,
+            Descripcion = productoDto.Descripcion,
+            Precio = productoDto.Precio,
+            id_categoria = productoDto.id_categoria,
+            id_marca = productoDto.id_marca
+        };
+        await _repo.AddAsync(producto);
+    }
+
+   public async Task<ProductoDto?> ObtenerPorIdAsync(int id)
+{
+    var producto = await _repo.GetByIdAsync(id);
+    if (producto == null) return null;
+
+    return new ProductoDto
+    {
+        id_producto = producto.id_producto,
+        ImgProducto = producto.ImgProducto,
+        Nombre = producto.Nombre,
+        Descripcion = producto.Descripcion,
+        Precio = producto.Precio,
+        id_categoria = producto.id_categoria,
+        id_marca = producto.id_marca
     };
-    await _repo.AddAsync(producto);
 }
 }

@@ -13,6 +13,14 @@ namespace Eshop.Infrastructure
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            // Explicitly configure the primary key (alternative to [Key] attribute)
+        modelBuilder.Entity<Producto>()
+            .HasKey(p => p.id_producto);
+            
+        // Optional: Configure auto-increment
+        modelBuilder.Entity<Producto>()
+            .Property(p => p.id_producto)
+            .ValueGeneratedOnAdd();
         }
     }
 }

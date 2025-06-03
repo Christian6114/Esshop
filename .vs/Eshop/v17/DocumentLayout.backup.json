@@ -63,8 +63,7 @@
               "RelativeToolTip": "src\\Eshop.Domain\\Interfaces\\IProductoRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T15:06:27.702Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-22T15:06:27.702Z"
             },
             {
               "$type": "Document",
@@ -76,8 +75,7 @@
               "RelativeToolTip": "src\\Eshop.Api\\Controllers\\ProductoController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T14:54:42.523Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-22T14:54:42.523Z"
             },
             {
               "$type": "Document",
@@ -89,8 +87,7 @@
               "RelativeToolTip": "src\\Eshop.Domain\\Entities\\Producto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T14:54:18.179Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-22T14:54:18.179Z"
             },
             {
               "$type": "Document",
@@ -102,8 +99,7 @@
               "RelativeToolTip": "src\\Eshop.Application\\DTOs\\ProductoDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T14:54:13.471Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-22T14:54:13.471Z"
             }
           ]
         }
