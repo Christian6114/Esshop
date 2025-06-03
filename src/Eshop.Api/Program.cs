@@ -4,8 +4,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Eshop.Infrastructure;
 
-
 var builder = WebApplication.CreateBuilder(args);
+
+// Add JWT authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -19,16 +20,23 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+// Add DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Add controllers
+builder.Services.AddControllers();
+
+// Add Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Register services
 builder.Services.AddScoped<IProductoService, ProductoService>();
 builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
-builder.Services.AddScoped<IUserService, UserService>(); 
+builder.Services.AddScoped<IUserService, UserService>();
 
+// Add CORS
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
@@ -38,6 +46,8 @@ builder.Services.AddCors(options =>
               .AllowAnyMethod();
     });
 });
+
+// Add authorization
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
@@ -49,22 +59,17 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors();
-
 app.UseHttpsRedirection();
-
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapGet("/productos", async (AppDbContext db) =>
-{
-    var productos = await db.Productos.ToListAsync();
-    return Results.Ok(productos);
-});
+app.UseRouting();
+app.MapControllers();
 
 app.MapPost("/productos", async (ProductoDto productoDto, IProductoService service) =>
 {
-    await service.AgregarAsync(productoDto);
-    return Results.Created($"/productos", productoDto);
+    var createdProducto = await service.AgregarAsync(productoDto);
+    return Results.Created($"/productos/{createdProducto.id_producto}", createdProducto);
 });
 
 app.MapPost("/login", async (LoginDto loginDto, IUserService userService) =>

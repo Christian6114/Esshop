@@ -1,6 +1,6 @@
 public interface IProductoService
 {
     Task<IEnumerable<ProductoDto>> ObtenerTodos();
-
-    Task AgregarAsync(ProductoDto productoDto);
+    Task<ProductoDto?> ObtenerPorIdAsync(int id);
+    Task<ProductoDto> AgregarAsync(ProductoDto productoDto);
 }
