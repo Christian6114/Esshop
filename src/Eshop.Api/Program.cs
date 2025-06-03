@@ -20,18 +20,18 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-// Add DbContext for Entity Framework Core
+// Add DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Add services for controllers
-builder.Services.AddControllers(); // Required for controller support
+// Add controllers
+builder.Services.AddControllers();
 
-// Add Swagger for API documentation
+// Add Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Register services and repositories
+// Register services
 builder.Services.AddScoped<IProductoService, ProductoService>();
 builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
@@ -52,7 +52,6 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
-// Configure middleware pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -64,15 +63,13 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Enable controller routing
 app.UseRouting();
 app.MapControllers();
 
-// Minimal API endpoints (retaining POST endpoints)
 app.MapPost("/productos", async (ProductoDto productoDto, IProductoService service) =>
 {
-    await service.AgregarAsync(productoDto);
-    return Results.Created($"/productos", productoDto);
+    var createdProducto = await service.AgregarAsync(productoDto);
+    return Results.Created($"/productos/{createdProducto.id_producto}", createdProducto);
 });
 
 app.MapPost("/login", async (LoginDto loginDto, IUserService userService) =>
