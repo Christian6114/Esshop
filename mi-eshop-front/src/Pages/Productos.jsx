@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../Componente/Navbar";
+import { useCart } from "../context/CartContext"; // Importamos el contexto del carrito
+import { Cart } from './Cart';
 
 const Productos = () => {
   const [productos, setProductos] = useState([]);
   const navigate = useNavigate();
+  const { addToCart, setShowCart, cartItemCount } = useCart(); // Usamos el contexto
 
   useEffect(() => {
     fetch("http://localhost:5157/productos")
       .then(res => res.json())
       .then(data => setProductos(data))
-     
+      .catch(() => alert("Error al cargar productos"));
   }, []);
 
   const handleProductClick = (id) => {
@@ -25,9 +27,73 @@ const Productos = () => {
         fontFamily: "'Poppins', sans-serif",
       }}
     >
-      <Navbar />
+      {/* Navigation Menu - Añadimos el ícono del carrito */}
+      <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: '#003087' }}>
+        <div className="container">
+          <a className="navbar-brand" href="/" style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
+            ESHOP
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <a className="nav-link" href="/">Inicio</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link active" aria-current="page" href="/productos">Productos</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/acerca">Acerca</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/contacto">Contacto</a>
+              </li>
+            </ul>
+            <div className="d-flex gap-2 align-items-center">
+              {/* Botón del carrito */}
+              <button
+                onClick={() => setShowCart(true)}
+                className="btn btn-outline-light position-relative"
+              >
+                🛒
+                {cartItemCount > 0 && (
+                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    {cartItemCount}
+                  </span>
+                )}
+              </button>
+              
+              <button
+                onClick={() => navigate("/login")}
+                className="btn btn-outline-light"
+              >
+                Login
+              </button>
+              <button
+                onClick={() => navigate("/registro")}
+                className="btn btn-outline-light"
+              >
+                Registrarse
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
 
-      {/* Main Content */}
+      {/* Componente del Carrito */}
+      <Cart />
+
+      {/* Main Content - Modificamos solo el botón de añadir al carrito */}
       <main className="container py-5">
         <h2 className="text-center mb-4" style={{ color: '#003087', fontWeight: '600' }}>
           Nuestros Productos
@@ -70,8 +136,8 @@ const Productos = () => {
                       className="btn w-100"
                       style={{ backgroundColor: '#FFC107', color: '#003087', fontWeight: '500' }}
                       onClick={(e) => {
-                        e.stopPropagation(); // Prevent card click from triggering
-                        alert(`Añadir ${prod.nombre} al carrito (funcionalidad pendiente)`);
+                        e.stopPropagation();
+                        addToCart(prod); // Añadimos el producto al carrito
                       }}
                     >
                       Añadir al Carrito
@@ -86,7 +152,7 @@ const Productos = () => {
         )}
       </main>
 
-      {/* Footer */}
+      {/* Footer (sin cambios) */}
       <footer
         className="text-white text-center py-4"
         style={{
