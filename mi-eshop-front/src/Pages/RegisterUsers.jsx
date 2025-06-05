@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./login.css"; // Asegúrate de importar los estilos
 
 const RegisterUsers = () => {
   const navigate = useNavigate();
@@ -42,11 +43,8 @@ const RegisterUsers = () => {
         Telefono: formData.telefono
       };
 
-      console.log("Datos enviados al backend:", payload);
-
       const response = await axios.post("http://localhost:5157/api/Usuario/registro", payload);
 
-      console.log("Respuesta backend:", response.data);
       setSuccess("Usuario registrado exitosamente");
       setError(null);
       setFormData({
@@ -58,121 +56,82 @@ const RegisterUsers = () => {
         telefono: ""
       });
 
-      // Redirigir a /login después de 3 segundos
       setTimeout(() => {
         navigate("/login");
       }, 3000);
-
     } catch (error) {
-      console.error("Error en el registro:", error.response?.data || error.message);
-      setError(error.response?.data?.Message || "Ups no se pudo registrar, el usuario ya existe o pusiste mismo correo");
+      setError(
+        error.response?.data?.Message ||
+          "Ups, no se pudo registrar. El usuario ya existe o el correo está repetido."
+      );
       setSuccess(null);
     }
   };
 
   return (
-    <div className="container mt-5" style={{ maxWidth: "500px" }}>
-      <h2 className="mb-4 text-center">Registro de Usuario</h2>
+    <div className="login-bg">
+      <div className="login-form">
+        <h2>Registro de Usuario</h2>
 
-      {error && (
-        <div className="alert alert-danger" role="alert">
-          {error}
-        </div>
-      )}
-      {success && (
-        <div className="alert alert-success" role="alert">
-          {success} Redirigiendo a login...
-        </div>
-      )}
+        {error && <div className="alert alert-danger">{error}</div>}
+        {success && <div className="alert alert-success">{success} Redirigiendo a login...</div>}
 
-      <form onSubmit={handleSubmit}>
-
-        <div className="mb-3">
-          <label htmlFor="nombre" className="form-label">Nombre</label>
+        <form onSubmit={handleSubmit}>
           <input
             type="text"
-            className="form-control"
-            id="nombre"
             name="nombre"
-            placeholder="Ingrese su nombre"
+            placeholder="Nombre"
             value={formData.nombre}
             onChange={handleChange}
             required
           />
-        </div>
 
-        <div className="mb-3">
-          <label htmlFor="apellido" className="form-label">Apellido</label>
           <input
             type="text"
-            className="form-control"
-            id="apellido"
             name="apellido"
-            placeholder="Ingrese su apellido"
+            placeholder="Apellido"
             value={formData.apellido}
             onChange={handleChange}
             required
           />
-        </div>
 
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">Correo Electrónico</label>
           <input
             type="email"
-            className="form-control"
-            id="email"
             name="email"
-            placeholder="ejemplo@correo.com"
+            placeholder="Correo electrónico"
             value={formData.email}
             onChange={handleChange}
             required
           />
-        </div>
 
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">Contraseña</label>
           <input
             type="password"
-            className="form-control"
-            id="password"
             name="password"
-            placeholder="Ingrese su contraseña"
+            placeholder="Contraseña"
             value={formData.password}
             onChange={handleChange}
             required
           />
-        </div>
 
-        <div className="mb-3">
-          <label htmlFor="direccion" className="form-label">Dirección</label>
           <input
             type="text"
-            className="form-control"
-            id="direccion"
             name="direccion"
-            placeholder="Ingrese su dirección"
+            placeholder="Dirección"
             value={formData.direccion}
             onChange={handleChange}
           />
-        </div>
 
-        <div className="mb-4">
-          <label htmlFor="telefono" className="form-label">Teléfono</label>
           <input
             type="text"
-            className="form-control"
-            id="telefono"
             name="telefono"
-            placeholder="Ingrese su teléfono"
+            placeholder="Teléfono"
             value={formData.telefono}
             onChange={handleChange}
           />
-        </div>
 
-        <button type="submit" className="btn btn-primary w-100">
-          Registrar
-        </button>
-      </form>
+          <button type="submit">Registrar</button>
+        </form>
+      </div>
     </div>
   );
 };

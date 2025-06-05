@@ -5,6 +5,8 @@ import CardProducto from "./Pages/CardProducto";
 import RegisterUsers from "./Pages/RegisterUsers";
 import Perfil from "./Pages/Perfil";
 import Administrador from "./Pages/Administrador";
+import Acerca from "./Pages/Acerca";
+import Contacto from "./Pages/Contactos";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path="/register" element={<RegisterUsers />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/administrador" element={<Administrador />} />
+        <Route path="/acerca" element={<Acerca />} />
+        <Route path="/contacto" element={<Contacto />} />
       </Routes>
     </BrowserRouter>
   );
