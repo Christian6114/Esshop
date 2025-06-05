@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Eshop.Domain.Entities;
+
 using Eshop.Infrastructure; // Add this for AppDbContext
 
 public class ProductoService : IProductoService

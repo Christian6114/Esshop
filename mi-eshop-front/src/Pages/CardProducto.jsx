@@ -1,7 +1,19 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Navbar from "../Componente/Navbar";
 
-const Card_Producto = () => {
+const Footer = () => (
+  <footer className="text-white text-center py-4" style={{ backgroundColor: '#003087', borderTop: '3px solid #FFC107' }}>
+    <div className="container">
+      <p className="mb-1">© 2025 Tienda El Salvador - Todos los derechos reservados</p>
+      <p className="mb-0" style={{ fontSize: '0.9rem' }}>
+        Inspirado en la vibrante cultura de El Salvador: pupusas, volcanes y mercados.
+      </p>
+    </div>
+  </footer>
+);
+
+const CardProducto = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [producto, setProducto] = useState(null);
@@ -9,55 +21,6 @@ const Card_Producto = () => {
   const [cantidad, setCantidad] = useState(1);
   const [imagenPrincipal, setImagenPrincipal] = useState("");
   const [productosRelacionados, setProductosRelacionados] = useState([]);
-
-  // Definir Navbar y Footer primero
-  const Navbar = () => (
-    <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: '#003087' }}>
-      <div className="container">
-        <a className="navbar-brand" href="/" style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
-          ESHOP
-        </a>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <a className="nav-link" href="/">Inicio</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link active" href="/productos">Productos</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/acerca">Acerca</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/contacto">Contacto</a>
-            </li>
-          </ul>
-          <div className="d-flex gap-2">
-            <button onClick={() => navigate("/login")} className="btn btn-outline-light">
-              Login
-            </button>
-            <button onClick={() => navigate("/registro")} className="btn btn-outline-light">
-              Registrarse
-            </button>
-          </div>
-        </div>
-      </div>
-    </nav>
-  );
-
-  const Footer = () => (
-    <footer className="text-white text-center py-4" style={{ backgroundColor: '#003087', borderTop: '3px solid #FFC107' }}>
-      <div className="container">
-        <p className="mb-1">© 2025 Tienda El Salvador - Todos los derechos reservados</p>
-        <p className="mb-0" style={{ fontSize: '0.9rem' }}>
-          Inspirado en la vibrante cultura de El Salvador: pupusas, volcanes y mercados.
-        </p>
-      </div>
-    </footer>
-  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -312,7 +275,7 @@ const Card_Producto = () => {
                   </>
                 ) : (
                   <div className="alert alert-warning">
-                    Este producto está actualmente agotado
+                   
                   </div>
                 )}
               </div>
@@ -372,4 +335,4 @@ const Card_Producto = () => {
   );
 };
 
-export default Card_Producto;
+export default CardProducto;
