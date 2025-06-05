@@ -4,6 +4,7 @@ import Productos from "./Pages/Productos";
 import CardProducto from "./Pages/CardProducto";
 import RegisterUsers from "./Pages/RegisterUsers";
 import Perfil from "./Pages/Perfil";
+import Administrador from "./Pages/Administrador";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <Route path="/producto/:id" element={<CardProducto />} />
         <Route path="/register" element={<RegisterUsers />} />
         <Route path="/perfil" element={<Perfil />} />
-        {/* Puedes agregar más rutas aquí según sea necesario */}
+        <Route path="/administrador" element={<Administrador />} />
       </Routes>
     </BrowserRouter>
   );
