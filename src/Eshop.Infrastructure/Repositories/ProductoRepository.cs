@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Eshop.Infrastructure;
-using Eshop.Domain.Entities;
+
 
 public class ProductoRepository : IProductoRepository
 {

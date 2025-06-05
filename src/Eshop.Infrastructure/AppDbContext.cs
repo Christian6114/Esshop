@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Eshop.Domain.Entities;
+
 
 namespace Eshop.Infrastructure
 {
@@ -7,14 +7,30 @@ namespace Eshop.Infrastructure
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
+         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Producto> Productos { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Marca> Marcas { get; set; }
-        public DbSet<Usuario> Usuario { get; set; }
+        
+       
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+           modelBuilder.Entity<Usuario>(entity =>
+    {
+        entity.ToTable("Usuario");
+        entity.HasKey(e => e.IdUsuario);
+        entity.Property(e => e.IdUsuario).HasColumnName("id_usuario");
+        entity.Property(e => e.Nombre).HasColumnName("nombre");
+        entity.Property(e => e.Apellido).HasColumnName("apellido");
+        entity.Property(e => e.Email).HasColumnName("email");
+        entity.Property(e => e.Password).HasColumnName("password");
+        entity.Property(e => e.Direccion).HasColumnName("direccion");
+        entity.Property(e => e.Telefono).HasColumnName("telefono");
+        entity.Property(e => e.Rol).HasColumnName("rol");
+    });
 
             // Producto configuration
             modelBuilder.Entity<Producto>()
@@ -46,7 +62,7 @@ namespace Eshop.Infrastructure
             modelBuilder.Entity<Marca>()
                 .ToTable("marca"); // Map to singular table name
 
-           
+
 
             // Relationships
             modelBuilder.Entity<Producto>()
@@ -60,6 +76,8 @@ namespace Eshop.Infrastructure
                 .WithMany()
                 .HasForeignKey(p => p.id_marca)
                 .OnDelete(DeleteBehavior.Restrict);
+
+           
         }
     }
 }
