@@ -5,6 +5,10 @@ using System.Threading.Tasks;
 using Eshop.Application.DTOs;
 using System;
 
+
+        
+
+
 namespace Eshop.Api.Controllers
 {
     [Route("api/[controller]")]
@@ -38,9 +42,8 @@ namespace Eshop.Api.Controllers
         {
             try
             {
-                // Ahora el servicio debe retornar (token, nombre)
-                var (token, nombre) = await _usuarioService.LoginAsync(loginDto.Email.ToLower(), loginDto.Password);
-                return Ok(new { token, nombre });
+                var (token, nombre, rol) = await _usuarioService.LoginAsync(loginDto.Email.ToLower(), loginDto.Password);
+                return Ok(new { token, nombre, rol });
             }
             catch (Exception ex)
             {

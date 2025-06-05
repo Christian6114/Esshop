@@ -51,7 +51,7 @@ namespace Eshop.Application.Services
             Console.WriteLine($"User created with ID: {createdUser.IdUsuario}"); // Add logging
             return createdUser;
         }
-            public async Task<(string token, string nombre)> LoginAsync(string email, string password)
+           public async Task<(string token, string nombre, string rol)> LoginAsync(string email, string password)
         {
             var usuario = await _usuarioRepository.GetByEmailAsync(email.ToLower());
             Console.WriteLine($"Usuario encontrado: {usuario != null}, Email: {email}");
@@ -87,7 +87,7 @@ namespace Eshop.Application.Services
             var tokenString = tokenHandler.WriteToken(token);
 
             // Retorna el token y el nombre del usuario
-            return (tokenString, usuario.Nombre);
+          return (tokenString, usuario.Nombre, usuario.Rol);
         }
 
     }

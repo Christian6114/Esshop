@@ -34,13 +34,19 @@ const Login = () => {
         throw new Error(data.message || "Credenciales incorrectas");
       }
 
-      if (data.token && data.nombre) {
+      if (data.token && data.nombre && data.rol) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("nombre", data.nombre);
-        navigate("/productos");
-        window.location.reload(); // Opcional: recarga para actualizar el navbar
+        localStorage.setItem("rol", data.rol);
+
+        if (data.rol === "admin") {
+          navigate("/administrador");
+        } else {
+          navigate("/productos");
+        }
+        window.location.reload(); // Opcional
       } else {
-        throw new Error("No se recibió token o nombre de autenticación");
+        throw new Error("No se recibió token, nombre o rol de autenticación");
       }
     } catch (error) {
       console.error("Error al hacer login:", error); // 🐞 Mostrar error
